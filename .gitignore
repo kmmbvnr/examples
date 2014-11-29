@@ -1,0 +1,4 @@
+*.pyc
+.tox
+db.sqlite3
+deploy/
