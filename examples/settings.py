@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'examples',
     'karenina.theme',
     'karenina.modules',
     'karenina.management',
@@ -50,7 +51,6 @@ INSTALLED_APPS = (
     'tests.examples.helloworld',
     'tests.examples.shipment',
     'tests.examples.customnode',
-    'examples',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -67,6 +67,7 @@ from django.conf import global_settings
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
     'karenina.modules.context_processors.modules',
+    'examples.urls.users',
 )
 
 ROOT_URLCONF = 'examples.urls'

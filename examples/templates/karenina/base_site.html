@@ -1,0 +1,28 @@
+{% extends 'karenina/base.html' %}
+
+{% block title %}Viewflow Demo{% endblock %}
+
+{% block navbar_items_right %}
+<style>
+.dropdown-menu .glyphicon {
+    min-width: 15px;
+}
+</style>
+<li class="dropdown">
+    {% if request.user.is_anonymous %}
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Login
+    {% else %}
+    <a href="{% url 'profile' %}"><i class="fa fa-user"></i> {{ request.user|title }}
+    {% endif %}
+    <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        {% for user in users %}
+        <li><a class="no-pjax" href="{% url 'login_as' %}?user_pk={{ user.pk }}"><i class="glyphicon {% if request.user == user %}glyphicon-ok{% endif %}"></i> {{ user.username|title }}</a></li>
+        {% endfor %}
+    </ul>
+</li>
+{% endblock %}
+
+{% block body_extra %}
+{% include 'wizard.html' %}
+{% endblock %}
