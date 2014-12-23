@@ -18,3 +18,13 @@ class Website(modules.Module):
 
         return modules.ModuleURLResolver('^$', [url('^$', index_view, name="index")], module=self,
                                          app_name=self.app_name, namespace=self.slug)
+
+class Viewform(modules.Module):
+    """
+    """
+    label = "Forms"
+    order = 20
+
+    def get_urls(self):
+        index_view = generic.RedirectView.as_view(url="http://forms.viewflow.io/")
+        return [url('^$', index_view, name="index")]
